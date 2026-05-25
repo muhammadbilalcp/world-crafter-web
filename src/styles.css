@@ -140,5 +140,29 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    overscroll-behavior: none;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
   }
 }
+
+.crosshair {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 20;
+}
+.crosshair::before, .crosshair::after {
+  content: "";
+  position: absolute;
+  background: white;
+  mix-blend-mode: difference;
+}
+.crosshair::before { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.crosshair::after { top: 50%; left: 0; height: 2px; width: 100%; transform: translateY(-50%); }
